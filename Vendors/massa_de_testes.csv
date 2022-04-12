@@ -1,0 +1,4 @@
+id;numero1;numero2;resultado_esperado;tipo_teste
+1;10;4;228;positivo
+2;15;a;resultado invalido;negativo
+3;16;;resultado invalido;negativo
