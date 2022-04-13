@@ -7,7 +7,7 @@ def ler_dados_csv():
     nome_arquivo = 'C:\\Users\\Particular\\PycharmProjects\\UnitTest_PyTest\\Vendors\\massa_de_testes.csv'
     try:
         with open(nome_arquivo, newline='') as arquivo_csv:
-            campos = csv.reader(arquivo_csv, delimiter=';')
+            campos = csv.reader(arquivo_csv, delimiter=',')
             next(campos)
             for linha in campos:
                 dados_csv.append(linha)
@@ -77,14 +77,14 @@ def test_calcular_area_paralelograma(numero1, numero2, resultado_esperado):
     # Valida
     assert resultado_obtido == resultado_esperado
 
-@pytest.mark.parametrize('id, numero1, numero2, resultado_esperado, tipo_teste', ler_dados_csv())  # Ler Arquivo CSV
+@pytest.mark.parametrize('id, numero1, numero2, resultado_esperado, tipo_teste', ler_dados_csv())
 def test_area_da_piramide(id, numero1, numero2, resultado_esperado, tipo_teste):
     # Configura
     # Executa
     resultado_obtido = main.calcular_area_piramide(int(numero1), int(numero2))
 
     # Valida
-    if tipo_teste == 'positivo':
-        assert int(resultado_obtido) == int(resultado_esperado)
+    if tipo_teste == 'negativo':
+        assert resultado_obtido == str(resultado_esperado)  # Teste Negativo
     else:
-        assert resultado_obtido == resultado_esperado
+        assert float(resultado_obtido) == float(resultado_esperado)  # Teste Positivo
