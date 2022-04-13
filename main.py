@@ -8,8 +8,8 @@ def calcular_area_paralelograma(b,h):
 
 def calcular_area_piramide(b,h): # Pirâmide retangular regular - https://brasilescola.uol.com.br/matematica/area-piramide.htm
     try:
-        return ((((math.sqrt((h*h) + (b/2)*(b/2)))*b)/2)*4)+(b*b)
-    except ValueError:
+        return int(((((math.sqrt((h*h) + (b/2)*(b/2)))*b)/2)*4)+(b*b))
+    except TypeError:
         return 'resultado invalido'    # Tratamento de erro
 
 
@@ -25,5 +25,5 @@ if __name__ == '__main__':
 
     b = 18
     h = 12
-    resultado = calcular_area_piramide(b, h)
+    resultado = int(calcular_area_piramide(b, h))
     print(f'A área da pirâmide é de {resultado}m2')
