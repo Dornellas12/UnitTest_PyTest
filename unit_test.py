@@ -81,10 +81,10 @@ def test_calcular_area_paralelograma(numero1, numero2, resultado_esperado):
 def test_area_da_piramide(id, numero1, numero2, resultado_esperado, tipo_teste):
     # Configura
     # Executa
-    resultado_obtido = main.calcular_area_piramide(numero1, numero2)
+    resultado_obtido = main.calcular_area_piramide(int(numero1), int(numero2))
 
     # Valida
     if tipo_teste == 'negativo':
         assert resultado_obtido == resultado_esperado  # Teste Negativo
     else:
-        assert resultado_obtido == resultado_esperado  # Teste Positivo
+        assert int(resultado_obtido) == int(resultado_esperado)  # Teste Positivo
