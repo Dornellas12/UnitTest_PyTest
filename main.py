@@ -1,7 +1,10 @@
 import math
 
 def calcular_area_cubo(lado):
-    return (lado*lado)*6
+    try:
+        return (lado*lado)*6
+    except TypeError:
+        return 'resultado invalido'    # Tratamento de erro
 
 def calcular_area_paralelograma(b,h):
     return (b*h)
@@ -9,7 +12,7 @@ def calcular_area_paralelograma(b,h):
 def calcular_area_piramide(b,h): # Pirâmide retangular regular - https://brasilescola.uol.com.br/matematica/area-piramide.htm
     try:
         return ((((math.sqrt((h*h) + (b/2)*(b/2)))*b)/2)*4)+(b*b)
-    except ValueError:
+    except TypeError:
         return 'resultado invalido'    # Tratamento de erro
 
 

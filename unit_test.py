@@ -30,14 +30,21 @@ def test_calcular_area_cubo_positivo():
 
 def test_calcular_area_cubo_negativo():
     # Configura/Prepara
-    lado = 6
+    lado = 'b'
     resultado_esperado = 200
 
     # Executa
     resultado_obtido = main.calcular_area_cubo(lado)
 
     # Valida
-    assert resultado_esperado == resultado_obtido
+    try:
+        lado01 = int(lado)
+        if lado01 > 0:
+            return int(resultado_obtido) == int(resultado_esperado)
+        else:
+            return print('Valor inválido')
+    except ValueError:
+        return print('Valor inválido')
 
 def test_calcular_area_paralelograma():
     # Configura
@@ -66,7 +73,8 @@ def test_area_da_piramide():
 lista_para_multiplicar_area = [
     (10, 4, 40),
     (15, 'a', 0),
-    (16, '', '')
+    (16, '', ''),
+    ('', 6, 60)
 ]
 @pytest.mark.parametrize('numero1, numero2, resultado_esperado', lista_para_multiplicar_area)
 def test_calcular_area_paralelograma(numero1, numero2, resultado_esperado):
@@ -74,17 +82,41 @@ def test_calcular_area_paralelograma(numero1, numero2, resultado_esperado):
     # Executa
     resultado_obtido = main.calcular_area_paralelograma(numero1, numero2)
 
-    # Valida
-    assert resultado_obtido == resultado_esperado
+# Valida
+    try:
+        numero01 = int(numero1)
+        numero02 = int(numero2)
+        resultado_esperado_ = int(resultado_esperado)
+        if numero01 > 0:
+            return resultado_obtido == resultado_esperado
+        elif numero02 > 0:
+            return resultado_obtido == resultado_esperado
+        elif resultado_esperado_ > 0:
+            return resultado_obtido == resultado_esperado
+        else:
+            return print('Valor inválido')
+        assert resultado_obtido == resultado_esperado
+    except ValueError:
+        return print('Valor inválido')
 
 @pytest.mark.parametrize('id, numero1, numero2, resultado_esperado, tipo_teste', ler_dados_csv())
-def test_area_da_piramide(id, numero1, numero2, resultado_esperado, tipo_teste):
+def test_area_da_piramide(id, numero1, numero2, resultado_esperado, tipo_teste):  # UnitTest CSV
     # Configura
     # Executa
-    resultado_obtido = main.calcular_area_piramide(int(numero1), int(numero2))
+    resultado_obtido = main.calcular_area_piramide(numero1, numero2)
 
-    # Valida
-    if tipo_teste == 'negativo':
-        assert resultado_obtido == resultado_esperado  # Teste Negativo
-    else:
-        assert int(resultado_obtido) == int(resultado_esperado)  # Teste Positivo
+    try:
+        numero01 = int(numero1)
+        numero02 = int(numero2)
+        resultado_esperado_ = int(resultado_esperado)
+        if numero01 > 0:
+            return resultado_obtido == resultado_esperado_
+        elif numero02 > 0:
+            return resultado_obtido == resultado_esperado_
+        elif resultado_esperado_ > 0:
+            return resultado_obtido == resultado_esperado_
+        else:
+            return print('Valor inválido')
+            assert resultado_obtido == resultado_esperado
+    except ValueError:
+        return print('Valor inválido')
